@@ -1,0 +1,455 @@
+{
+  "intents": [
+    {
+      "tag": "Greeting",
+      "patterns": [
+        "Hello!",
+        "Hi!",
+        "Hey",
+        "Hi there!",
+        "Greetings",
+        "What's up?"
+      ],
+      "responses": [
+        "Hello! How can I assist you today?",
+        "Hi there! What can I help you with?",
+        "Greetings! How may I be of service?",
+        "Hey! What's on your mind?",
+        "I'm ready to help you.",
+        "Hi there! How can I be of service?",
+        "Hello! How's your day going?",
+        "Hi! How can I assist you today?",
+        "Hey! Nice to see you. What can I do for you?"
+      ]
+    },
+    {
+      "tag": "Goodbye",
+      "patterns": [
+        "Goodbye!",
+        "Bye!",
+        "See you later!",
+        "Farewell!",
+        "Adios!",
+        "Take care!",
+        "See you soon!",
+        "Until next time"
+      ],
+      "responses": [
+        "Goodbye! If you have more questions in the future, don't hesitate to ask.",
+        "Farewell! Have a great day!",
+        "Until we meet again. Goodbye!",
+        "Bye! Take care and stay safe.",
+        "Adios! Don't hesitate to return if you need assistance.",
+        "See you later! Have a wonderful day!",
+        "Take care! If you have more inquiries, feel free to reach out.",
+        "See you soon! I'm here whenever you need help.",
+        "Goodbye! If there's anything else you need, just let me know."
+      ]
+    },
+    {
+      "tag": "BotStatus",
+      "patterns": [
+        "How are you feeling?",
+        "What's your status?",
+        "Are you doing well?",
+        "How's the bot today?",
+        "Bot, how are you?",
+        "Is everything okay with the bot?"
+      ],
+      "responses": [
+        "I'm just a computer program, so I don't have feelings, but I'm here and ready to assist you. How can I help you today?",
+        "I don't have feelings, but I'm here to assist you with any questions or tasks you have. What can I do for you?",
+        "I'm a chatbot, so I don't have feelings, but thanks for asking! How can I assist you today?",
+        "All systems are go! Ready to assist you with anything you need."
+      ]
+    },
+    {
+      "tag": "Thanks",
+      "patterns": [
+        "Thank you!",
+        "Thanks!",
+        "Thanks a lot!",
+        "I appreciate it!",
+        "You've been helpful!",
+        "I'm grateful!",
+        "Thank you so much!",
+        "Thanks a million"
+      ],
+      "responses": [
+        "You're welcome! If you need further assistance, feel free to ask.",
+        "No problem at all. Happy to help!",
+        "It's my pleasure. If you have more questions, don't hesitate to ask.",
+        "You're very welcome! If there's anything else you need, just let me know.",
+        "Glad I could assist! If you have more questions in the future, don't hesitate to reach out.",
+        "You're appreciated! If you need further information, feel free to ask.",
+        "Thank you for your kind words! I'm here to assist you whenever you require.",
+        "Thanks a million! If there's anything else on your mind, feel free to share.",
+        "You're welcome! If there's anything else I can do for you, just let me know."
+      ]
+    },
+    {
+      "tag": "OK",
+      "patterns": [
+        "OK",
+        "Okay",
+        "Sure",
+        "Alright",
+        "Got it",
+        "Sounds good"
+      ],
+      "responses": [
+        "Great! How else can I assist you?",
+        "Understood. What's your next question?",
+        "Alright, let's continue. How can I help you further?",
+        "Got it! What would you like to do next?",
+        "Sure thing! What can I do for you?",
+        "Okay! How can I make your experience even better?"
+      ]
+    },
+    {
+      "tag": "Sorry",
+      "patterns": [
+        "I'm sorry",
+        "My apologies",
+        "Sorry for the mistake",
+        "I apologize",
+        "My bad"
+      ],
+      "responses": [
+        "No problem. How can I assist you now?",
+        "That's alright. How can I help you today?",
+        "It happens. What can I assist you with?",
+        "No worries. How can I make it right?",
+        "I appreciate your understanding. How can I make things better for you?"
+      ]
+    },
+    {
+      "tag": "NotUnderstood",
+      "patterns": [
+        "I don't understand",
+        "Can you explain?",
+        "Please clarify",
+        "What do you mean?",
+        "I'm confused"
+      ],
+      "responses": [
+        "I'm sorry, I didn't quite get that. Can you provide more details or rephrase your question?",
+        "I'm not sure I understand. Could you please rephrase your question?",
+        "I might need more information to comprehend. Can you elaborate or ask in a different way?",
+        "I understand it can be confusing. Can you give me more context?"
+      ]
+    },
+    {
+      "tag": "Help",
+      "patterns": [
+        "Help",
+        "Can you assist me?",
+        "I need some help",
+        "How does this work?",
+        "What can you do?",
+        "Help me with something",
+        "I'm confused, can you help?",
+        "I'm stuck, need assistance",
+        "Help! I'm not sure what to do"
+      ],
+      "responses": [
+        "I'm here to assist you. What do you need help with?",
+        "Sure, I'd be happy to help. Please let me know what you require.",
+        "How can I assist you today? Just tell me what you need, and I'll do my best to provide the information or support you're looking for.",
+        "Of course! I'm here to assist. What can I help you with today?",
+        "Absolutely, I'm at your service. How can I assist you?",
+        "I'm here to provide support. What can I do to make things easier for you?",
+        "Don't worry, I've got your back. What do you need help with?",
+        "I understand it can be confusing. Let's work together to figure it out.",
+        "No problem! I'm here to guide you. What's the issue you're facing?"
+      ]
+    },
+    {
+      "tag": "UserFeelingGood",
+      "patterns": [
+        "I'm good",
+        "I'm doing well",
+        "I'm great",
+        "I'm fine",
+        "Feeling awesome"
+      ],
+      "responses": [
+        "That's great to hear! How can I assist you further?",
+        "I'm glad to hear that. How can I help you today?",
+        "Awesome! If you have any questions or need assistance, feel free to ask.",
+        "Feeling good is always a plus! What can I do for you today?"
+      ]
+    },
+    {
+      "tag": "Weather",
+      "patterns": [
+        "What's the weather like?",
+        "Weather forecast",
+        "Tell me the weather",
+        "Is it going to rain today?",
+        "How's the weather today?"
+      ],
+      "responses": [
+        "I'm sorry, I don't have access to real-time weather data. You can check a weather website or app for the latest forecast.",
+        "Unfortunately, I can't provide real-time weather information. I recommend checking a reliable weather source for the current forecast.",
+        "I don't have the latest weather data, but you can easily find it on a weather website or app to plan your day.",
+        "I wish I could tell you the current weather, but for real-time updates, it's best to check a weather service or app."
+      ]
+    },
+    {
+      "tag": "Location",
+      "patterns": [
+        "Where am I?",
+        "What's my location?",
+        "My current location",
+        "Tell me my coordinates",
+        "Can you find my location?"
+      ],
+      "responses": [
+        "I'm sorry, I don't have access to your current location. You might check your device settings for location information.",
+        "Unfortunately, I can't determine your location. You may want to enable location services on your device for accurate information.",
+        "I don't have the ability to find your current location. Check your device settings or map app for that information.",
+        "Locating your exact position is beyond my capabilities. Please check your device settings for location services."
+      ]
+    },
+    {
+      "tag": "News",
+      "patterns": [
+        "What's in the news?",
+        "Tell me the latest news",
+        "Give me a news update",
+        "What's happening in the world?",
+        "Any interesting news?"
+      ],
+      "responses": [
+        "I'm sorry, I don't have access to real-time news updates. You can check a news website or app for the latest headlines.",
+        "Unfortunately, I can't provide current news updates. For the latest information, please visit a reliable news website or app.",
+        "I don't have the latest news, but staying informed is important! Check a reputable news source for the most recent updates.",
+        "I wish I could share the latest news, but I recommend checking a news website or app for up-to-date information."
+      ]
+    },
+    {
+      "tag": "ChatbotAbilities",
+      "patterns": [
+        "What are your capabilities?",
+        "Explain your functions.",
+        "Tell me what you can do.",
+        "List your abilities.",
+        "How can you help me?",
+        "Give me a summary of your abilities.",
+        "What are your football-related features?",
+        "Can you provide football information?",
+        "What is your expertise in football?"
+      ],
+      "responses": [
+        "I can chat with you, answer basic questions and mainly provide information about football including: \n1. Upcoming Fixtures\n2. Fixtures of League/Team\n3. Table of League\n4 .Top Scorer\n5. Get team of a league\n6. Player List/Coach of a team\nMy ability depends on how I am programmed and the football API document I have.",
+        "I can chat with you, answer basic questions, and primarily provide information about football, including:\n1. Upcoming Fixtures\n2. Fixtures of League/Team\n3. League Table\n4. Top Scorer\n5. Retrieving team information from a league\n6. Providing player lists and information about coaches of a team\nMy ability depends on how I am programmed and the football API document I have.",
+        "My main function is to chat with you, answer fundamental questions, and mainly offer football-related information, such as:\n1. Upcoming Fixtures\n2. Fixtures of League/Team\n3. League Table\n4. Top Scorer\n5. Retrieving team information from a league\n6. Providing player lists and information about coaches of a team\nMy capabilities are determined by my programming and the football API documentation I have access to.",
+        "I specialize in chatting with users, answering basic questions, and primarily providing information about football. This includes:\n1. Upcoming Fixtures\n2. Fixtures of League/Team\n3. League Table\n4. Top Scorer\n5. Retrieving team information from a league\n6. Providing player lists and information about coaches of a team\nMy abilities are influenced by my programming and the football API document I have."
+      ]
+    },
+    {
+      "tag": "BotInfo",
+      "patterns": [
+        "What's your name?",
+        "Tell me about yourself.",
+        "Bot information",
+        "Who are you?",
+        "Bot, introduce yourself."
+      ],
+      "responses": [
+        "I'm Johan Cruyff, a virtual assistant here to help you with information, answer your questions, and assist you with various tasks. How can I assist you today?",
+        "I'm Johan Cruyff, your friendly virtual assistant. I can provide information, answer your questions, and help you with tasks. What do you need help with?"
+      ]
+    },
+    {
+      "tag": "ResultsOfTeam",
+      "patterns": [
+        "Latest match results for team",
+        "What are the recent results of team?",
+        "Show me the scores of the last games played by team",
+        "Recent performance of team",
+        "Latest outcomes for team matches",
+        "Team results for team",
+        "Results of team in the last few games"
+      ],
+      "responses": [
+        "Here are the latest match results of team:"
+      ]
+    },
+    {
+      "tag": "LastRoundResult",
+      "patterns": [
+        "What were the results of the most recent round?",
+        "Can you tell me about the latest round of league?",
+        "What happened in the last match day of league?",
+        "How did the teams do last time they played in the league?",
+        "What were the scores from the previous round?",
+        "Tell me about the recent results of league.",
+        "Give me an update on the latest matches."
+      ],
+      "responses": [
+        "Here are the results of the last matchday:"
+      ]
+    },
+    {
+      "tag": "UpcomingFixtures",
+      "patterns": [
+        "Upcoming match dates",
+        "Fixture details for the coming matches",
+        "What matches are on the horizon?",
+        "Next fixtures",
+        "Next matches",
+        "When is the next match?"
+      ],
+      "responses": [
+        "Here's the upcoming fixture schedule:"
+      ]
+    },
+    {
+      "tag": "FixturesLeagues",
+      "patterns": [
+        "Next matches in the league",
+        "Schedule for the upcoming league games",
+        "When does team play next in the league?",
+        "Fixture list for the league",
+        "Match list for the league's upcoming games",
+        "Upcoming fixtures in the league"
+      ],
+      "responses": [
+        "Here are the fixtures in the next round:"
+      ]
+    },
+    {
+      "tag": "FixturesTeam",
+      "patterns": [
+        "Next matches for team",
+        "Schedule for team's upcoming games",
+        "When does team play next?",
+        "Fixture list for team",
+        "Match list for team's upcoming matches"
+      ],
+      "responses": [
+        "Here are the next 5 games of the team:"
+      ]
+    },
+    {
+      "tag": "Table",
+      "patterns": [
+        "Current league standings",
+        "League rankings",
+        "Top teams in the league standings",
+        "Positions in the league table",
+        "Show me the current league table",
+        "League table positions"
+      ],
+      "responses": [
+        "Here's the current league table:"
+      ]
+    },
+    {
+      "tag": "TopScorerLeague",
+      "patterns": [
+        "Leading goal scorers league",
+        "Top goal scorer in the league",
+        "League scoring leaders ",
+        "Players with most goals in the league",
+        "Goal tally in the league",
+        "Who's been scoring the most in the league?",
+        "Leading goal-scorer list of league",
+        "Top goal getters in the league",
+        "Top scorers in the league"
+      ],
+      "responses": [
+        "Here are the top 10 goal scorers in the league:"
+      ]
+    },
+    {
+      "tag": "TeamOfLeague",
+      "patterns": [
+        "List of teams in the league",
+        "Teams in the league",
+        "Clubs participating in the league",
+        "Tell me about the teams in the league",
+        "Which teams are part of the  league?"
+      ],
+      "responses": [
+        "Here are the teams in the league this season:"
+      ]
+    },
+    {
+      "tag": "PlayerOfTeam",
+      "patterns": [
+        "Who are the players of club?",
+        "Tell me about the players of club .",
+        "List the squad of team.",
+        "Player roster for club.",
+        "Give me information about the players of club."
+      ],
+      "responses": [
+        "Here are the players:"
+      ]
+    },
+    {
+      "tag": "CoachOfTeam",
+      "patterns": [
+        "Who is the coach of club?",
+        "Tell me about the coach of club.",
+        "Who manages club?",
+        "Coach for club."
+      ],
+      "responses": [
+        "The coach is:"
+      ]
+    },
+    {
+      "tag": "Competition",
+      "patterns": [
+        {
+          "name": "UEFA Champions League",
+          "id": "CL"
+        },
+        {
+          "name": "Primeira Liga",
+          "id": "PPL"
+        },
+        {
+          "name": "Premier League",
+          "id": "PL"
+        },
+        {
+          "name": "Eredivisie",
+          "id": "DED"
+        },
+        {
+          "name": "Bundesliga",
+          "id": "BL1"
+        },
+        {
+          "name": "Ligue 1",
+          "id": "FL1"
+        },
+        {
+          "name": "Serie A",
+          "id": "SA"
+        },
+        {
+          "name": "Euro",
+          "id": "EC"
+        },
+        {
+          "name": "Copa Libertadores",
+          "id": "CLI"
+        },
+        {
+          "name": "La Liga",
+          "id": "PD"
+        },
+        {
+          "name": "FIFA World Cup",
+          "id": "WC"
+        }
+      ]
+    }
+  ]
+}
