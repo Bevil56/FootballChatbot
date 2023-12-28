@@ -1,7 +1,7 @@
 import torch
 
 from model import NeuralNet
-from nltkUtils import bag_of_words, tokenize
+from nltk_utils import bag_of_words, tokenize
 from handle import *
 from handle import bot_name
 

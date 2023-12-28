@@ -1,4 +1,4 @@
-from footballData import *
+from football_data import *
 import random
 
 cup_id = ["WC", "CLI", "EC", "CL"]

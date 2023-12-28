@@ -1,6 +1,6 @@
 import json
 
-from nltkUtils import tokenize, stemming, bag_of_words
+from nltk_utils import tokenize, stemming, bag_of_words
 import string
 import numpy as np
 import torch

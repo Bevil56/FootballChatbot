@@ -401,55 +401,6 @@
       "responses": [
         "The coach is:"
       ]
-    },
-    {
-      "tag": "Competition",
-      "patterns": [
-        {
-          "name": "UEFA Champions League",
-          "id": "CL"
-        },
-        {
-          "name": "Primeira Liga",
-          "id": "PPL"
-        },
-        {
-          "name": "Premier League",
-          "id": "PL"
-        },
-        {
-          "name": "Eredivisie",
-          "id": "DED"
-        },
-        {
-          "name": "Bundesliga",
-          "id": "BL1"
-        },
-        {
-          "name": "Ligue 1",
-          "id": "FL1"
-        },
-        {
-          "name": "Serie A",
-          "id": "SA"
-        },
-        {
-          "name": "Euro",
-          "id": "EC"
-        },
-        {
-          "name": "Copa Libertadores",
-          "id": "CLI"
-        },
-        {
-          "name": "La Liga",
-          "id": "PD"
-        },
-        {
-          "name": "FIFA World Cup",
-          "id": "WC"
-        }
-      ]
     }
   ]
 }

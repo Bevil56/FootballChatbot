@@ -1,5 +1,9 @@
+import os
+
 import pytz
 import requests
+from tqdm import tqdm
+
 from headers import *
 from datetime import datetime
 from fuzzywuzzy import fuzz
@@ -429,3 +433,64 @@ def check_season_exists(competition_code, season):
         season_list = [season_data['startDate'][:4] for season_data in seasons_data.get('seasons', [])]
         return season in season_list
     return False
+
+
+def export_teams_data_to_json(output_file_path='all_teams_data.json'):
+    with open('all_competitions_data.json') as f:
+        competitions_data = json.load(f)
+
+    leagues = competitions_data.get('league', [])
+
+    all_teams_data = []
+    teams = []
+
+    for league in tqdm(leagues, desc='Exporting data', unit=' league'):
+        if 'id' in league:
+            response = call_api(f'competitions/{league["id"]}/teams')
+
+            if response.status_code == 200:
+                teams_data = response.json()
+
+                if 'teams' in teams_data:
+                    for team in teams_data['teams']:
+                        name = team.get('name', '')
+                        tla = team.get('tla', '')
+                        team_id = team.get('id', '')
+
+                        if not any(existing_team['id'] == team_id for existing_team in teams):
+                            team_result = {
+                                'id': team_id,
+                                'name': name,
+                                'tla': tla
+                            }
+                            teams.append(team_result)
+
+    teams.sort(key=lambda x: x['name'])
+
+    all_teams_data.append({'teams': teams})
+
+    if os.path.isfile(output_file_path):
+        user_response = input("The file already exists. Do you want to overwrite it? (Yes/No): ").lower()
+
+        if user_response == 'yes':
+            with tqdm(total=1, desc='Writing data', unit=' file', bar_format='{l_bar}{bar}') as pbar:
+                with open(output_file_path, 'w', encoding='utf-8') as json_file:
+                    json.dump(all_teams_data, json_file, ensure_ascii=False, indent=2)
+                pbar.update(1)
+            print(f'Data overwritten in {output_file_path}')
+        else:
+            new_file_path = input("Enter a new file name: ")
+            with tqdm(total=1, desc='Writing data', unit=' file', bar_format='{l_bar}{bar}') as pbar:
+                with open(new_file_path, 'w', encoding='utf-8') as json_file:
+                    json.dump(all_teams_data, json_file, ensure_ascii=False, indent=2)
+                pbar.update(1)
+            print(f'Data saved to {new_file_path}')
+    else:
+        with tqdm(total=1, desc='Writing data', unit=' file', bar_format='{l_bar}{bar}') as pbar:
+            with open(output_file_path, 'w', encoding='utf-8') as json_file:
+                json.dump(all_teams_data, json_file, ensure_ascii=False, indent=2)
+            pbar.update(1)
+        print(f'Data saved to {output_file_path}')
+
+
+export_teams_data_to_json()
