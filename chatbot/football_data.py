@@ -9,7 +9,7 @@ from datetime import datetime
 from fuzzywuzzy import fuzz
 import json
 
-MAX_RATIO = 85
+MAX_RATIO = 80
 words_to_remove = [
     "CF",
     "SC",
@@ -104,21 +104,23 @@ def get_standings(competition_code, season):
     return standings_results
 
 
-def get_competition_info(competition_name):
-    global MAX_RATIO
+def get_competition_info(competition_name, file_path='all_competitions_data.json'):
     competition_code = None
+    competition_name_returned = None
 
-    with open('new_intents.json') as f:
-        intents = json.load(f)
+    # Load data from the JSON file
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-    for intent in intents['intents']:
-        if intent['tag'] == 'Competition':
-            for entry in intent['patterns']:
-                current_ratio = fuzz.ratio(competition_name.lower(), entry['name'].lower())
-                if current_ratio > (MAX_RATIO - 10):
-                    competition_code = entry['id']
-                    return entry['name'], competition_code
-    return competition_name, competition_code
+    leagues = data['leagues']
+    for league in leagues:
+        current_ratio = fuzz.ratio(competition_name.lower(), league['name'].lower())
+        if current_ratio > MAX_RATIO:
+            competition_code = league['id']
+            competition_name_returned = league['name']
+            break
+    return competition_name_returned, competition_code
+
 
 
 def get_teams_list(competition_name):
@@ -148,20 +150,32 @@ def get_teams_list(competition_name):
     return competition_name, teams
 
 
-def get_team_info(competition_name, team_name):
-    global MAX_RATIO
+def get_team_info(team_name, file_path='all_teams_data.json'):
     team_id = None
+    team_name_returned = None
 
-    competition_name, teams = get_teams_list(competition_name)
+    # Load data from the JSON file
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-    for team in teams:
-        for word in words_to_remove:
-            team['name'] = team['name'].replace(word, "").strip()
-            current_ratio = fuzz.ratio(team_name.lower(), team['name'].lower())
+    for team_data in data:
+        teams = team_data['teams']
+        for team in teams:
+            team_name_processed = team['name']
+            for word in words_to_remove:
+                team_name_processed = team_name_processed.replace(word, "").strip()
+            current_ratio = fuzz.ratio(team_name.lower(), team_name_processed.lower())
             if current_ratio > MAX_RATIO:
                 team_id = team['id']
-                return team['name'], team_id
-    return team_name, team_id
+                team_name_returned = team['name']
+                break
+
+    return team_name_returned, team_id
+
+
+
+
+
 
 
 def get_next_matches_of_team(team_id, limit=5):
@@ -436,15 +450,15 @@ def check_season_exists(competition_code, season):
 
 
 def export_teams_data_to_json(output_file_path='all_teams_data.json'):
-    with open('all_competitions_data.json') as f:
+    with open('../data/all_competitions_data.json') as f:
         competitions_data = json.load(f)
 
-    leagues = competitions_data.get('league', [])
+    leagues = competitions_data.get('leagues', [])
 
     all_teams_data = []
     teams = []
 
-    for league in tqdm(leagues, desc='Exporting data', unit=' league'):
+    for league in tqdm(leagues, desc='Exporting data', unit=' leagues'):
         if 'id' in league:
             response = call_api(f'competitions/{league["id"]}/teams')
 
@@ -493,4 +507,5 @@ def export_teams_data_to_json(output_file_path='all_teams_data.json'):
         print(f'Data saved to {output_file_path}')
 
 
-export_teams_data_to_json()
+
+

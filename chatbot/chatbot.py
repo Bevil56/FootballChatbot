@@ -7,10 +7,10 @@ from handle import bot_name
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('new_intents.json', 'r') as json_data:
+with open('../data/new_intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
-FILE = "data.pth"
+FILE = "../data.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
