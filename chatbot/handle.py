@@ -54,30 +54,23 @@ def handle_last_round_result(intent):
 
 def handle_result_team(intent):
     print(f"{bot_name}: You've inquired about the recent results of a club.")
-    print(f"{bot_name}: Can you let me know the competition name, please?")
-    competition_name_input = input("You: ")
-    competition_name_input, competition_code = get_competition_info(competition_name_input)
     header = random.choice(intent['responses'])
-    if competition_code is not None:
-        print(f"{bot_name}: Which team in {competition_name_input} you want to know the "
-              f"results?")
-        team_name_input = input("You: ")
-        team_name_input, team_id = get_team_info(competition_name_input, team_name_input)
-        print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
-        if team_id is not None:
-            results_of_team = get_last_matches_of_team(team_id)
-            if results_of_team is not None:
-                results_text = "\n".join(results_of_team)
-                print(f"{bot_name}: {header}")
-                print(f"\n{results_text}")
-            else:
-                print(f"{bot_name}: Sorry! I do not have data about your concerns...")
+    print(f"{bot_name}: Which team you want to know the results?")
+    team_name_input = input("You: ")
+    team_name_input, team_id = get_team_info(team_name_input)
+    print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
+    if team_id is not None:
+        results_of_team = get_last_matches_of_team(team_id)
+        if results_of_team is not None:
+            results_text = "\n".join(results_of_team)
+            print(f"{bot_name}: {header}")
+            print(f"\n{results_text}")
         else:
-            print(f"{bot_name}: Can not found {team_name_input} in {competition_name_input}...")
-            print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
-                  f"in leagues')")
+            print(f"{bot_name}: Sorry! I do not have data about your concerns...")
     else:
-        print(f"Sorry!{competition_name_input} is invalid league...")
+        print(f"{bot_name}: Can not found {team_name_input}...")
+        print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
+              f"in leagues')")
 
 
 def handle_upcoming_fixtures(intent):
@@ -115,30 +108,24 @@ def handle_fixtures_leagues(intent):
 
 def handle_fixtures_team(intent):
     print(f"{bot_name}: You just requested to view the upcoming match schedule of a specific team.")
-    print(f"{bot_name}: Can you let me know the competition name, please?")
-    competition_name_input = input("You: ")
-    competition_name_input, competition_code = get_competition_info(competition_name_input)
     header = random.choice(intent['responses'])
 
-    if competition_code is not None:
-        print(f"{bot_name}: Which team in {competition_name_input} you want to know the fixtures?")
-        team_name_input = input("You: ")
-        team_name_input, team_id = get_team_info(competition_name_input, team_name_input)
-        print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
-        if team_id is not None:
-            matches_list = get_next_matches_of_team(team_id)
-            if matches_list is not None:
-                results_text = "\n".join(matches_list)
-                print(f"{bot_name}: {header}")
-                print(f"\n{results_text}")
-            else:
-                print(f"{bot_name}: Sorry! I do not have data about your concerns...")
+    print(f"{bot_name}: Which team you want to know the fixtures?")
+    team_name_input = input("You: ")
+    team_name_input, team_id = get_team_info(team_name_input)
+    print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
+    if team_id is not None:
+        matches_list = get_next_matches_of_team(team_id)
+        if matches_list is not None:
+            results_text = "\n".join(matches_list)
+            print(f"{bot_name}: {header}")
+            print(f"\n{results_text}")
         else:
-            print(f"{bot_name}: Can not found {team_name_input} in {competition_name_input}...")
-            print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
-                  f"in leagues')")
+            print(f"{bot_name}: Sorry! I do not have data about your concerns...")
     else:
-        print(f"Sorry!{competition_name_input} is invalid league...")
+        print(f"{bot_name}: Can not found {team_name_input} ...")
+        print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
+              f"in leagues')")
 
 
 def handle_table(intent):
@@ -265,72 +252,58 @@ def handle_team_of_league(intent):
 
 def handle_coach_of_team(intent):
     print(f"{bot_name}: You've inquired about the coach's name of a club.")
-    print(f"{bot_name}: Can you let me know the competition name, please?")
-    competition_name_input = input("You: ")
-    competition_name_input, competition_code = get_competition_info(competition_name_input)
     header = random.choice(intent['responses'])
-    if competition_code is not None:
-        print(f"{bot_name}: Which team in {competition_name_input} you want to know the "
-              f"coach info?")
-        team_name_input = input("You: ")
-        team_name_input, team_id = get_team_info(competition_name_input, team_name_input)
-        print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
-        if team_id is not None:
-            _, _, coach_name = get_coach_info(competition_name_input, team_name_input)
-            print(f"{bot_name}: {header}")
-            if coach_name != 'Unknown':
-                print(f"{bot_name}: Coach of {team_name_input} in {competition_name_input}: {coach_name}.")
-            else:
-                print(f"{bot_name}: Coach information not found for {team_name_input} in {competition_name_input}.")
+    print(f"{bot_name}: Which team you want to know the coach info?")
+    team_name_input = input("You: ")
+    team_name_input, team_id = get_team_info(team_name_input)
+    print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
+    if team_id is not None:
+        _, _, coach_name = get_coach_info(team_name_input)
+        print(f"{bot_name}: {header}")
+        if coach_name != 'Unknown':
+            print(f"{bot_name}: Coach of {team_name_input} : {coach_name}.")
         else:
-            print(f"{bot_name}: Can not found {team_name_input} in {competition_name_input}...")
-            print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
-                  f"in leagues')")
+            print(f"{bot_name}: Coach information not found for {team_name_input}.")
     else:
-        print(f"Sorry!{competition_name_input} is invalid league...")
+        print(f"{bot_name}: Can not found {team_name_input}...")
+        print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
+              f"in leagues')")
 
 
 def handle_players_of_team(intent):
     print(f"{bot_name}: You've asked for the squad of a team.")
-    print(f"{bot_name}: Can you let me know the competition name, please?")
-    competition_name_input = input("You: ")
-    competition_name_input, competition_code = get_competition_info(competition_name_input)
     header = random.choice(intent['responses'])
-    if competition_code is not None:
-        print(f"{bot_name}: Which team in {competition_name_input} you want to know "
-              f"players info?")
-        team_name_input = input("You: ")
-        team_name_input, team_id = get_team_info(competition_name_input, team_name_input)
-        print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
-        if team_id is not None:
-            team_name_input, team_id, players = get_players_data(competition_name_input, team_name_input)
-            if players:
-                print(f"{bot_name}: {header}")
-                position_mapping = {
-                    "Goalkeeper": "Gk",
-                    "Defence": "DF",
-                    "Midfield": "MF",
-                    "Offence": "FW"
-                }
-                print("{:<15} {:<45} {:<30} {:<15}".format("Position", "Name",
-                                                           "Nationality", "Age"))
-                for position in position_mapping:
-                    sorted_players = [player for player in players if player['Position'] == position]
-                    if sorted_players:
-                        for player in sorted_players:
-                            position_abbreviation = position_mapping[position]
-                            print("{:<15} {:<45} {:<30} {:<15}".format(position_abbreviation,
-                                                                       player['Player Name'],
-                                                                       player['Nationality'],
-                                                                       player['Age']))
-            else:
-                print(f"{bot_name}: No player information found for {team_name_input} in {competition_name_input}.")
+    print(f"{bot_name}: Which team you want to know players info?")
+    team_name_input = input("You: ")
+    team_name_input, team_id = get_team_info(team_name_input)
+    print(f"{bot_name}: Please wait a moment for me to retrieve the data!")
+    if team_id is not None:
+        team_name_input, team_id, players = get_players_data(team_name_input)
+        if players:
+            print(f"{bot_name}: {header}")
+            position_mapping = {
+                "Goalkeeper": "Gk",
+                "Defence": "DF",
+                "Midfield": "MF",
+                "Offence": "FW"
+            }
+            print("{:<15} {:<45} {:<30} {:<15}".format("Position", "Name",
+                                                       "Nationality", "Age"))
+            for position in position_mapping:
+                sorted_players = [player for player in players if player['Position'] == position]
+                if sorted_players:
+                    for player in sorted_players:
+                        position_abbreviation = position_mapping[position]
+                        print("{:<15} {:<45} {:<30} {:<15}".format(position_abbreviation,
+                                                                   player['Player Name'],
+                                                                   player['Nationality'],
+                                                                   player['Age']))
         else:
-            print(f"{bot_name}: Can not find {team_name_input} in {competition_name_input}...")
-            print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
-                  f"in leagues')")
+            print(f"{bot_name}: No player information found for {team_name_input}.")
     else:
-        print(f"{bot_name}: Sorry! {competition_name_input} is invalid league...")
+        print(f"{bot_name}: Can not find {team_name_input} ...")
+        print(f"{bot_name}: You can ask me about the team name of a specific league(e.g., 'Teams "
+              f"in leagues')")
 
 
 def handle_other(intent):

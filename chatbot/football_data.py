@@ -9,7 +9,7 @@ from datetime import datetime
 from fuzzywuzzy import fuzz
 import json
 
-MAX_RATIO = 80
+MAX_RATIO = 90
 words_to_remove = [
     "CF",
     "SC",
@@ -104,7 +104,7 @@ def get_standings(competition_code, season):
     return standings_results
 
 
-def get_competition_info(competition_name, file_path='all_competitions_data.json'):
+def get_competition_info(competition_name, file_path='../data/all_competitions_data.json'):
     competition_code = None
     competition_name_returned = None
 
@@ -120,7 +120,6 @@ def get_competition_info(competition_name, file_path='all_competitions_data.json
             competition_name_returned = league['name']
             break
     return competition_name_returned, competition_code
-
 
 
 def get_teams_list(competition_name):
@@ -150,7 +149,7 @@ def get_teams_list(competition_name):
     return competition_name, teams
 
 
-def get_team_info(team_name, file_path='all_teams_data.json'):
+def get_team_info(team_name, file_path='../data/all_teams_data.json'):
     team_id = None
     team_name_returned = None
 
@@ -171,11 +170,6 @@ def get_team_info(team_name, file_path='all_teams_data.json'):
                 break
 
     return team_name_returned, team_id
-
-
-
-
-
 
 
 def get_next_matches_of_team(team_id, limit=5):
@@ -380,8 +374,8 @@ def get_top_scorers_league(competition_code, season):
     return top_scorers
 
 
-def get_players_data(competition_name, team_name):
-    team_name, team_id = get_team_info(competition_name, team_name)
+def get_players_data(team_name):
+    team_name, team_id = get_team_info(team_name)
     age = None
     if team_id is not None:
         players = []
@@ -420,8 +414,8 @@ def get_players_data(competition_name, team_name):
     return []
 
 
-def get_coach_info(competition_name, team_name):
-    team_name, team_id = get_team_info(competition_name, team_name)
+def get_coach_info(team_name):
+    team_name, team_id = get_team_info(team_name)
 
     if team_id is not None:
         response = call_api(f'teams/{team_id}')
@@ -449,7 +443,7 @@ def check_season_exists(competition_code, season):
     return False
 
 
-def export_teams_data_to_json(output_file_path='all_teams_data.json'):
+def export_teams_data_to_json(output_file_path='../data/all_teams_data.json'):
     with open('../data/all_competitions_data.json') as f:
         competitions_data = json.load(f)
 
@@ -505,7 +499,3 @@ def export_teams_data_to_json(output_file_path='all_teams_data.json'):
                 json.dump(all_teams_data, json_file, ensure_ascii=False, indent=2)
             pbar.update(1)
         print(f'Data saved to {output_file_path}')
-
-
-
-

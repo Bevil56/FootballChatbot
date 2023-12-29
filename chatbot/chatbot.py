@@ -50,7 +50,7 @@ def main():
 
         probs = torch.softmax(output, dim=1)
         prob = probs[0][predicted.item()]
-        if prob.item() > 0.65:
+        if prob.item() > 0.7:
             for intent in intents['intents']:
                 if tag == intent["tag"]:
                     print(tag)

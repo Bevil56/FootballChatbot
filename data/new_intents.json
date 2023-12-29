@@ -258,8 +258,8 @@
         "Bot, introduce yourself."
       ],
       "responses": [
-        "I'm Johan Cruyff, a virtual assistant here to help you with information, answer your questions, and assist you with various tasks. How can I assist you today?",
-        "I'm Johan Cruyff, your friendly virtual assistant. I can provide information, answer your questions, and help you with tasks. What do you need help with?"
+        "I'm Johan Cruyff, a virtual assistant here to answer your questions and assist you with various tasks about football. How can I assist you today?",
+        "I'm Johan Cruyff, your friendly virtual assistant. I can provide information, answer your questions, and help you with tasks about football. What do you need help with?"
       ]
     },
     {
@@ -270,7 +270,6 @@
         "Show me the scores of the last games played by team",
         "Recent performance of team",
         "Latest outcomes for team matches",
-        "Team results for team",
         "Results of team in the last few games"
       ],
       "responses": [

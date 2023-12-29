@@ -7,6 +7,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from model import NeuralNet
+from football_data import export_teams_data_to_json
 
 print("Please wait a moment... The training process is getting underway!")
 with open('../data/new_intents.json', 'r') as file:
@@ -97,7 +98,6 @@ for epoch in range(num_epochs):
 
 print("Completing... 100.00%")
 print(f"Final Loss: {loss.item():.4f}")
-print("Training process has been completed. Thanks for waiting patiently!")
 print("File saved to data.pth")
 data = {
     "model_state": model.state_dict(),
@@ -109,4 +109,6 @@ data = {
 }
 FILE = "../data.pth"
 torch.save(data, FILE)
+export_teams_data_to_json()
+print("Training process has been completed. Thanks for waiting patiently!")
 
